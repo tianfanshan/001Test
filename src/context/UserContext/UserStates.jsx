@@ -4,7 +4,7 @@ import axios from 'axios'
 
 const token = JSON.parse(localStorage.getItem('token'))
 
-const initialvalues = {
+const initialState = {
     token: token ? token : null,
     user: null,
     message:''
@@ -12,11 +12,11 @@ const initialvalues = {
 
 const API_URL ='http://localhost:8080'
 
-export const UserContext = createContext(initialvalues)
+export const UserContext = createContext(initialState)
 
 export const UserProvider = ({children}) => {
     
-    const [state,dispatch] = useReducer(UserReducer,initialvalues)
+    const [state,dispatch] = useReducer(UserReducer,initialState)
     
     const login = async(user) => {
         const res = await axios.post(API_URL + '/users/login',user)

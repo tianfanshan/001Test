@@ -8,8 +8,9 @@ const Login = () => {
     const { login } = useContext(UserContext)
     
     const navigate = useNavigate()
-
+  
     const onFinish = (values) => {
+      console.log(values)
         login(values)
     }
 
@@ -21,6 +22,7 @@ const Login = () => {
         setTimeout(() => {
             const foundToken = JSON.parse(localStorage.getItem('token'))
             if(foundToken){
+              navigate('/profile')
                 console.log('hay token')
             }
         }, 3000);
